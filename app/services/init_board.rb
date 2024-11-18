@@ -6,8 +6,12 @@ class InitBoard
   end
 
   def call
-    board = Board.new(board_params.merge(mine_positions: generate_mine_positions))
-    board.save
+    board = Board.new(board_params)
+    if board.valid?
+      board.mine_positions = generate_mine_positions
+      board.save
+    end
+
     board
   end
 
