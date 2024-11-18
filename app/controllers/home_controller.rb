@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def dashboard
-    @last_recent_boards = Board.order(created_at: :desc).limit(10)
+    # List the 10 most recent boards
+    @last_recent_boards = Board.order(id: :desc).limit(10)
   end
 end
